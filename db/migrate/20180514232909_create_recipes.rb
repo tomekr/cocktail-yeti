@@ -3,6 +3,7 @@ class CreateRecipes < ActiveRecord::Migration[5.2]
     create_table :recipes do |t|
       t.references :cocktail, foreign_key: true
       t.string :source
+      t.string :directions
 
       t.timestamps
     end

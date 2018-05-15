@@ -46,10 +46,12 @@ cocktails.each do |cocktail_name, attributes|
     name: cocktail_name,
     cocktail_type: attributes[:cocktail_type],
     glass: attributes[:glass],
-    # directions: attributes[:directions],
   )
 
-  recipe = cocktail.recipes.create(source: PDT_SOURCE_STRING)
+  recipe = cocktail.recipes.create(
+    source: PDT_SOURCE_STRING,
+    directions: attributes[:directions],
+  )
 
   attributes[:cocktail_items].each do |cocktail_item|
     ingredient = Ingredient.find_or_create_by(name: cocktail_item[:name])
