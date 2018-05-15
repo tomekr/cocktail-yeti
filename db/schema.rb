@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_14_233003) do
+ActiveRecord::Schema.define(version: 2018_05_15_003715) do
 
   create_table "cocktails", force: :cascade do |t|
     t.string "name"
@@ -21,14 +21,21 @@ ActiveRecord::Schema.define(version: 2018_05_14_233003) do
   end
 
   create_table "ingredients", force: :cascade do |t|
-    t.integer "recipe_id"
     t.string "name"
     t.string "generic_name"
-    t.string "ingredient_use"
-    t.string "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
+  end
+
+  create_table "recipe_ingredients", force: :cascade do |t|
+    t.integer "recipe_id"
+    t.integer "ingredient_id"
+    t.string "ingredient_use"
+    t.string "amount"
+    t.index ["ingredient_id", "recipe_id"], name: "index_recipe_ingredients_on_ingredient_id_and_recipe_id"
+    t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id"
+    t.index ["recipe_id", "ingredient_id"], name: "index_recipe_ingredients_on_recipe_id_and_ingredient_id"
+    t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
   end
 
   create_table "recipes", force: :cascade do |t|
