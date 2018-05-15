@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Cocktail Yeti is an open source Cocktail GraphQL API hosted on Rails.
 
-Things you may want to cover:
+## Development
 
-* Ruby version
+To get started:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. `bundle install`
+2. To setup the database and populate it with data, run `rails db:setup`
+3. `bundle exec rails server` and navigate to [http://localhost:3000](http://localhost:3000)
