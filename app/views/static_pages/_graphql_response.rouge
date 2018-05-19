@@ -1,0 +1,41 @@
+{
+  "data": {
+    "cocktails": [
+      {
+        "name": "Black Thorn (Irish)",
+        "recipes": [
+          {
+            "recipe_ingredients": [
+              {
+                "ingredient_name": "Black Bush Irish Whiskey",
+                "amount": "2oz",
+                "ingredient_use": "Build"
+              },
+              {
+                "ingredient_name": "Angostura Bitters",
+                "amount": "2dashes",
+                "ingredient_use": "Build"
+              },
+              {
+                "ingredient_name": "Dolin Dry Vermouth",
+                "amount": "1oz",
+                "ingredient_use": "Build"
+              },
+              {
+                "ingredient_name": "Lemon Twist",
+                "amount": "1",
+                "ingredient_use": "Garnish"
+              },
+              {
+                "ingredient_name": "St. George Absinthe",
+                "amount": null,
+                "ingredient_use": "Rinse"
+              }
+            ],
+            "source": "Meehan, J., 2011. The PDT Cocktail Book: The Complete Bartender's Guide from the Celebrated Speakeasy. Sterling Epicure."
+          }
+        ]
+      }
+    ]
+  }
+}

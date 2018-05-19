@@ -1,2 +1,15 @@
-<h1>Welcome to the Cocktail Yeti!</h1>
-<p>This is a GraphQL Cocktail API. You can get started with a POST to <a href="<%= request.url %>graphql" data-method="post"><%= request.url %>graphql</a></p>
+<h1>Welcome to Cocktail Yeti</h1>
+<p>This is an open source GraphQL Cocktail API built on Rails. You can get started with a POST to <a href="<%= request.url %>graphql" data-method="post"><%= request.url %>graphql</a></p>
+
+
+The above example sends the following GraohQL Query:
+
+<pre>
+<%= render "graphql_example", language: :graphql %>
+</pre>
+
+And returns a JSON response in the form of:
+
+<pre>
+<%= render "graphql_response", language: :json %>
+</pre>
