@@ -3,5 +3,6 @@ Types::RecipeIngredientType = GraphQL::ObjectType.define do
   description "Represents the use of an Ingredient in a recipe"
   field :ingredient_use, types.String
   field :amount, types.String
+  field :ingredient_name, types.String
   field :ingredient, Types::IngredientType
 end
