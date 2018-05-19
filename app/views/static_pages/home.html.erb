@@ -1,2 +1,3 @@
 <h1>Welcome to the Cocktail Yeti!</h1>
-<p>This is a GraphQL Cocktail API. You can get started with a POST to <a href="<%= request.url %>graphql" data-method="post"><%= request.url %>graphql</a></p>
+<p>This is a GraphQL Cocktail API. You can get started with a POST to <a href="<%= request.url %>graphql?query={ping}" data-method="post"><%= request.url %>graphql</a></p>
+<p>Click  <a href="<%= request.url %>graphql?query={cocktails(random:true){name,recipes{recipe_ingredients{ingredient_name,amount,ingredient_use},source}}}" data-method="post">this link</a> to render a random cocktail</p>
