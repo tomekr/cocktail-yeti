@@ -3,6 +3,10 @@ Types::QueryType = GraphQL::ObjectType.define do
   # Add root-level fields here.
   # They will be entry points for queries on your schema.
 
+  field :ping, types.String do
+    resolve ->(obj, args, ctx) { "pong" }
+  end
+
   field :cocktails do
     type types[Types::CocktailType]
     argument :id, types.ID
