@@ -1,4 +1,6 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "font-awesome-sprockets";
+@import "font-awesome";
 @import "bootstrap";
 
 body > .container {
@@ -8,4 +10,8 @@ body > .container {
 .footer > .container {
   padding-right: 15px;
   padding-left: 15px;
+}
+
+.nav-fa {
+  padding: 0;
 }

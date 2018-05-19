@@ -73,4 +73,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'graphiql-rails', group: :development
 gem 'bootstrap', '~> 4.1.1'
+gem 'font-awesome-sass', '~> 5.0.13'
 gem 'jquery-rails'
