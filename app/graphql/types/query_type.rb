@@ -11,8 +11,11 @@ Types::QueryType = GraphQL::ObjectType.define do
     type types[Types::CocktailType]
     argument :id, types.ID
     argument :name, types.String
+    argument :random, types.Boolean, default_value: false
     resolve -> (obj, args, ctx) {
-      if args[:name]
+      if args[:random]
+        [Cocktail.order("RANDOM()").first]
+      elsif args[:name]
         Cocktail.find_by_name(args[:name])
       elsif args[:id]
         Cocktail.find(args[:id])
