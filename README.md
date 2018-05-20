@@ -1,4 +1,4 @@
-# README
+# Cocktail Yeti [![Build Status](https://travis-ci.org/tomekr/cocktail-yeti.svg?branch=master)](https://travis-ci.org/tomekr/cocktail-yeti)
 
 Cocktail Yeti is an open source Cocktail GraphQL API hosted on Rails.
 
