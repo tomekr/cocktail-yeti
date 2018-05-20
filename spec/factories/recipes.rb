@@ -3,6 +3,6 @@ FactoryBot.define do
     source "PDT Cocktail Book"
     directions "Mix ingredients with ice and shake"
     # Association
-    cocktail nil
+    cocktail
   end
 end

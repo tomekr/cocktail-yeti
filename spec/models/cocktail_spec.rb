@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Cocktail, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "is not valid without a name" do
+    auction = Cocktail.new(name: nil)
+    expect(auction).to_not be_valid
+  end
 end

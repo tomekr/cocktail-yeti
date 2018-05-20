@@ -22,4 +22,19 @@ Types::QueryType = GraphQL::ObjectType.define do
       end
     }
   end
+
+  field :ingredient do
+    type Types::IngredientType
+    argument :id, types.ID
+    argument :name, types.String
+    resolve -> (obj, args, ctx) {
+      if args[:name]
+        Ingredient.find_by_name(args[:name])
+      elsif args[:id]
+        Ingredient.find(args[:id])
+      else
+        Ingredient.first(10)
+      end
+    }
+  end
 end
