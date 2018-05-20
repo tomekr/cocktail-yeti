@@ -1,0 +1,13 @@
+  {
+    cocktails(random: true) {
+      name
+      recipes {
+        recipe_ingredients {
+          ingredient_name
+          amount
+          ingredient_use
+        }
+        source
+      }
+    }
+  }

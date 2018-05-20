@@ -1,7 +1,9 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "rouge";
 @import "bootstrap";
+@import "syntax";
 
 body > .container {
   padding: 40px 15px 0;
