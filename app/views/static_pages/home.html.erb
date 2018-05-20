@@ -1,15 +1,33 @@
 <h1>Welcome to Cocktail Yeti</h1>
-<p>This is an open source GraphQL Cocktail API built on Rails. You can get started with a POST to <a href="<%= request.url %>graphql" data-method="post"><%= request.url %>graphql</a></p>
+<p class="lead">Cocktail Yeti is an open source GraphQL Cocktail API built on Rails</p>
+
+<p>Graphql is a query language written by Facebook. It's pretty neat, you should <a href="https://graphql.org/learn/">check it out</a>.</p>
 
 
-The above example sends the following GraohQL Query:
+<h4>Example Usage</h4>
 
-<pre>
+<p>Click  <a href="<%= request.url %>graphql?query={cocktails(random:true){name,recipes{recipe_ingredients{ingredient_name,amount,ingredient_use},source}}}" data-method="post">this link</a> to render a random cocktail using the API.</p>
+
+<p>The above example sends the following GraohQL Query:</p>
+
+<div class="row">
+  <div class="col-4">
+    <pre class="highlight">
+      <code>
 <%= render "graphql_example", language: :graphql %>
-</pre>
+      </code>
+    </pre>
+  </div>
+</div>
 
-And returns a JSON response in the form of:
+<p>And returns a JSON response in the form of:</p>
 
-<pre>
+<div class="row">
+  <div class="col-8">
+  <pre class="highlight">
+    <code>
 <%= render "graphql_response", language: :json %>
-</pre>
+    </code>
+  </pre>
+  </div>
+</div>
