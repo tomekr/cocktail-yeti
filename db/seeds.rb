@@ -66,4 +66,15 @@ cocktails.each do |cocktail_name, attributes|
   cocktail.save
 end
 
-puts "done"
+UPC_CSV = "db/upc_seed.csv"
+puts "Parsing data from UPC csv..."
+upcs = {}
+
+CSV.foreach(UPC_CSV, {:headers => true}).each do |row|
+  ingredient = Ingredient.find_by_name(row["Ingredient"])
+  raise unless ingredient
+  ingredient.barcodes.create(barcode: row["UPC"])
+  print "."
+end
+
+puts "\n\ndone."
