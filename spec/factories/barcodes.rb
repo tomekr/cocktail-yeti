@@ -1,7 +1,9 @@
 FactoryBot.define do
   factory :barcode do
-    barcode "MyString"
-    symbology_type "MyString"
-    ingredient nil
+    factory :aperol_barcode do
+      barcode "086785900001"
+      symbology_type nil
+      ingredient factory: :aperol
+    end
   end
 end

@@ -11,5 +11,8 @@ FactoryBot.define do
     factory :simple_syrup do
       name "Simple Syrup"
     end
+    factory :aperol do
+      name "Aperol"
+    end
   end
 end
