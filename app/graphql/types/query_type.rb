@@ -27,9 +27,19 @@ Types::QueryType = GraphQL::ObjectType.define do
     type Types::IngredientType
     argument :id, types.ID
     argument :name, types.String
+    argument :barcode, types.String
+    argument :symbology_type, types.String
     resolve -> (obj, args, ctx) {
       if args[:name]
         Ingredient.find_by_name(args[:name])
+      elsif args[:barcode]
+        ingredient = Ingredient.joins(:barcodes).where(
+          barcodes: { barcode: args[:barcode] }
+        ).first
+        unless ingredient
+          Rails.logger.info "BarcodeNotFound: #{args[:barcode]}, sym_type: #{args[:symbology_type]}"
+        end
+        ingredient
       elsif args[:id]
         Ingredient.find(args[:id])
       else

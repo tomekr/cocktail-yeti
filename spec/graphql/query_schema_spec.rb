@@ -6,7 +6,7 @@ describe CocktailYetiSchema do
   let(:context) { {} }
   let(:variables) { {} }
   # Call `result` to execute the query
-  let(:result) {
+  def result(query_string)
     res = CocktailYetiSchema.execute(
       query_string,
       context: context,
@@ -17,17 +17,16 @@ describe CocktailYetiSchema do
       raise "GraphQL query failed with message: #{ res["errors"] }"
     end
     res
-  }
-
+  end
   describe "cocktails" do
-    let(:query_string) { %|{ cocktails { name, recipes { source, recipe_ingredients { ingredient_name } } } }| }
 
     it "returns a Last Word cocktail with recipes and recipe ingredients" do
+      query_string =  %|{ cocktails { name, recipes { source, recipe_ingredients { ingredient_name } } } }|
       cocktail = create(:cocktail, name: "Last Word")
       recipe = create(:recipe, cocktail: cocktail)
       recipe_ingredient = create(:recipe_ingredient, recipe: recipe)
 
-      response_cocktails = result["data"]["cocktails"]
+      response_cocktails = result(query_string)["data"]["cocktails"]
       expect(response_cocktails.size).to be(1)
 
       response_cocktail = response_cocktails.first
@@ -47,9 +46,9 @@ describe CocktailYetiSchema do
   end
 
   describe "ingredient" do
-    let(:query_string) { %|{ ingredient(name: "Lime Juice") { recipes { cocktail_name, recipe_ingredients { ingredient_name } } } }| }
 
     it "returns a list of recipes given an ingredient" do
+      query_string =  %|{ ingredient(name: "Lime Juice") { recipes { cocktail_name, recipe_ingredients { ingredient_name } } } }|
       cocktail = create(:cocktail, name: "Daiquiri")
       recipe = create(:recipe, cocktail: cocktail)
 
@@ -61,7 +60,7 @@ describe CocktailYetiSchema do
       lime_juice = create(:recipe_ingredient, recipe: recipe, ingredient: lime_juice_ingredient)
       simple_syrup = create(:recipe_ingredient, recipe: recipe, ingredient: simple_syrup_ingredient)
 
-      response_ingredients = result["data"]["ingredient"]
+      response_ingredients = result(query_string)["data"]["ingredient"]
       expect(response_ingredients).to have_key("recipes")
       response_recipes = response_ingredients["recipes"]
       expect(response_recipes.size).to be(1)
@@ -77,6 +76,21 @@ describe CocktailYetiSchema do
         lime_juice_ingredient.name,
         simple_syrup_ingredient.name
       )
+    end
+
+    it "returns an ingredient for an existing barcode" do
+      aperol_barcode = create(:aperol_barcode)
+      query_string =  %|{ ingredient(barcode: "#{aperol_barcode.barcode}") { name } }|
+
+      response_ingredient = result(query_string)["data"]["ingredient"]
+      expect(response_ingredient).not_to be_nil
+      expect(response_ingredient["name"]).to eq(aperol_barcode.ingredient.name)
+    end
+
+    it "returns nil for a non-existant barcode" do
+      query_string =  %|{ ingredient(barcode: "does_not_exist", symbology_type: "upc") { name } }|
+      response_ingredient = result(query_string)["data"]["ingredient"]
+      expect(response_ingredient).to be_nil
     end
   end
 end
