@@ -1,18 +1,18 @@
 FactoryBot.define do
   factory :ingredient do
-    name "Green Chartreuse"
+    name { "Green Chartreuse" }
 
     factory :rum do
-      name "Plantation Rum"
+      name { "Plantation Rum" }
     end
     factory :lime_juice do
-      name "Lime Juice"
+      name { "Lime Juice" }
     end
     factory :simple_syrup do
-      name "Simple Syrup"
+      name { "Simple Syrup" }
     end
     factory :aperol do
-      name "Aperol"
+      name { "Aperol" }
     end
   end
 end
