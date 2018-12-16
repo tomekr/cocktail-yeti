@@ -15,6 +15,10 @@ group :development, :test do
   gem 'factory_bot_rails'
 end
 
+group :test do
+  gem 'rspec_junit_formatter'
+end
+
 group :production do
   gem 'pg', '0.21.0'
 end
