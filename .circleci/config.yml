@@ -4,7 +4,7 @@ jobs:
     parallelism: 3
     working_directory: ~/cocktail-yeti
     docker:
-      - image: circleci/ruby:2.5.3
+      - image: circleci/ruby:2.5.3-node
         environment: # environment variables for primary container
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
