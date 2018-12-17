@@ -17,8 +17,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  <% if ENV.fetch("DATABASE_URL") %>
-  url: <%= ENV.fetch("DATABASE_URL") %>
+  <% if ENV["DATABASE_URL"] %>
+  url: <%= ENV["DATABASE_URL"] %>
   <% else %>
   host: <%= ENV.fetch("PGHOST") %>
   user: <%= ENV.fetch("PGUSER") %>
