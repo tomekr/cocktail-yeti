@@ -17,9 +17,13 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  <% if ENV.fetch("DATABASE_URL") %>
+  url: <%= ENV.fetch("DATABASE_URL") %>
+  <% else %>
   host: <%= ENV.fetch("PGHOST") %>
   user: <%= ENV.fetch("PGUSER") %>
   password: <%= ENV.fetch("PGPASS") %>
+  <% end %>
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>

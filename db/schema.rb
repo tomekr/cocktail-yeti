@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2018_05_24_184224) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "barcodes", force: :cascade do |t|
     t.string "barcode"
     t.string "symbology_type"
-    t.integer "ingredient_id"
+    t.bigint "ingredient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ingredient_id"], name: "index_barcodes_on_ingredient_id"
@@ -39,8 +42,8 @@ ActiveRecord::Schema.define(version: 2018_05_24_184224) do
   create_table "recipe_ingredients", force: :cascade do |t|
     t.string "ingredient_use"
     t.string "amount"
-    t.integer "recipe_id"
-    t.integer "ingredient_id"
+    t.bigint "recipe_id"
+    t.bigint "ingredient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ingredient_id", "recipe_id"], name: "index_recipe_ingredients_on_ingredient_id_and_recipe_id"
@@ -52,10 +55,14 @@ ActiveRecord::Schema.define(version: 2018_05_24_184224) do
   create_table "recipes", force: :cascade do |t|
     t.string "source"
     t.string "directions"
-    t.integer "cocktail_id"
+    t.bigint "cocktail_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cocktail_id"], name: "index_recipes_on_cocktail_id"
   end
 
+  add_foreign_key "barcodes", "ingredients"
+  add_foreign_key "recipe_ingredients", "ingredients"
+  add_foreign_key "recipe_ingredients", "recipes"
+  add_foreign_key "recipes", "cocktails"
 end
