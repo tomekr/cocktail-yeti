@@ -50,6 +50,7 @@ jobs:
       - run:
           name: Database setup
           command: bin/rails db:schema:load --trace
+
       # Run rspec in parallel
       - run:
           name: Run rspec in parallel
@@ -63,3 +64,8 @@ jobs:
       # Save test results for timing analysis
       - store_test_results:
           path: test_results
+
+      # Run security scans
+      - run:
+          name: Run brakeman security scanner
+          command: bundle exec brakeman --exit-on-warn --quiet -f plain
