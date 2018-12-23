@@ -65,7 +65,12 @@ jobs:
       - store_test_results:
           path: test_results
 
-      # Run security scans
+      # Run Brakeman security scan
       - run:
           name: Run brakeman security scanner
           command: bundle exec brakeman --exit-on-warn --quiet -f plain
+
+      # Run bundler-audit security scan
+      - run:
+          name: Run bundler-audit to check for vulnerable dependencies
+          command: bundle exec bundler-audit check --update
