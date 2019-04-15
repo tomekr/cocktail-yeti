@@ -9,3 +9,10 @@ To get started:
 1. `bundle install`
 2. To setup the database and populate it with data, run `rails db:setup`
 3. `bundle exec rails server` and navigate to [http://localhost:3000](http://localhost:3000)
+
+### Docker
+
+1. Build the web container with `docker-compose build web`
+2. To start the web container, run `docker-compose up -d web`
+3. To drop into a shell on the web container, run `docker-compose exec web sh`
+3. To run the test suite, run `bundle exec rake`
