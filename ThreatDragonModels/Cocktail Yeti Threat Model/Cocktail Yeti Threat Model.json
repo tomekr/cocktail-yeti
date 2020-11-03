@@ -1,0 +1,12 @@
+{
+  "summary": {
+    "title": "Cocktail Yeti Threat Model",
+    "owner": "tomek",
+    "description": "Cocktail API"
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [],
+    "reviewer": "tomek"
+  }
+}
